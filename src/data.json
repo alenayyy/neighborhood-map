@@ -1,0 +1,224 @@
+{
+  "destinations":[
+    {
+      "title": "The Mission",
+      "location": {
+        "lat": 34.438001,
+        "long": -119.71363
+      },
+      "name": "Mission, Santa Barbara",
+      "address": "2201 Laguna St, Santa Barbara, CA 93105",
+      "type": "church, establishment, place_of_worship, point_of_interest",
+      "description": "Quaint mission founded in 1786 by Spanish Franciscans, still in use as a Catholic church"
+    },
+    {
+      "title": "Stearns Warf",
+      "location": {
+        "lat": 34.409981,
+        "long": -119.685586
+      },
+      "name": "Stearns Wharf, Santa Barbara",
+      "address": "S217 Stearns Wharf, Santa Barbara, CA 93101",
+      "type": "establishment, point_of_interest",
+      "description": "Storied wooden wharf offering restaurants, varied shops, a small aquarium & water views"
+    },
+    {
+      "title": "The Zoo",
+      "location": {
+        "lat": 34.419212,
+        "long": -119.668389
+      },
+      "name": "Santa Barbara Zoo",
+      "address": "500 Ninos Dr, Santa Barbara, CA 93103",
+      "type": "establishment, point_of_interest",
+      "description": "Small zoo with hundreds of animals in natural habitats, a miniature train ride & picnic spots"
+    },
+    {
+      "title": "East Beach",
+      "location": {
+        "lat": 34.415256,
+        "long": -119.676353
+      },
+      "name": "East Beach, Santa Barbara",
+      "address": "East Beach, Santa Barbara, CA",
+      "type": "establishment, natural_feature",
+      "description": "East Beach located in Santa Barbara, California is often the first beach seen upon entering the city limits. East Beach is separated from West Beach by Stearn's Wharf, and is proximal to downtown"
+    },
+    {
+      "title": "El Presidio",
+      "location": {
+        "lat": 34.422582,
+        "long": -119.69891
+      },
+      "name": "El Presidio de Santa Bárbara State Historic Park",
+      "address": "123 E Canon Perdido St, Santa Barbara, CA 93101",
+      "type": "establishment, museum, park, point_of_interest",
+      "description": "Historical site housing remnants of a 1782 Spanish fortress, including 2 original adobe buildings"
+    },
+    {
+      "title": "Arroyo Burro Beach",
+      "location": {
+        "lat": 34.404222,
+        "long": -119.742969
+      },
+      "name": "Arroyo Burro Beach",
+      "address": "2981 Cliff Dr, Santa Barbara, CA 9310",
+      "type": "establishment, point_of_interest",
+      "description": "This oceanfront beach with seasonal lifeguards & a grassy area for picnicking allows off-leash dogs"
+    },
+    {
+      "title": "County Courthouse",
+      "location": {
+        "lat": 34.424003,
+        "long": -119.702085
+      },
+      "name": "Santa Barbara County Courthouse",
+      "address": "1100 Anacapa St, Santa Barbara, CA 93101",
+      "type": " courthouse, establishment, local_government_office, point_of_interest",
+      "description": "1929 tile-roof courthouse complex known for a mural room & Spanish Colonial Revival embellishments"
+    },
+    {
+      "title": "Lotusland",
+      "location": {
+        "lat": 34.44238,
+        "long": -119.657547
+      },
+      "name": "Lotusland",
+      "address": "Cold Springs Road, Montecito, CA 93108",
+      "type": "establishment, park, point_of_interest",
+      "description": "37-acre estate & botanical garden with 3,000+ plants, including rare cycads, cacti & euphorbias"
+    },
+    {
+      "title": "Botanic Garden",
+      "location": {
+        "lat": 34.456548,
+        "long": -119.710025
+      },
+      "name": "Santa Barbara Botanic Garden",
+      "address": "1212 Mission Canyon Rd, Santa Barbara, CA 93105",
+      "type": "establishment, park, point_of_interest",
+      "description": "Enchanting garden featuring 5.5 miles of paths, authentic Japanese tea garden, redwood grove & more"
+    },
+    {
+      "title": "Leadbetter Beach",
+      "location": {
+        "lat": 34.402416,
+        "long": -119.69916
+      },
+      "name": "Leadbetter Beach",
+      "address": "Shoreline Dr, Santa Barbara, CA 93101",
+      "type": "establishment, park, point_of_interest",
+      "description": "City beach offering both white sand & a grass lawn, plus picnic areas, showers & restrooms"
+    },
+    {
+      "title": "Old Mission",
+      "location": {
+        "lat": 34.438329,
+        "long": -119.714059
+      },
+      "name": "Old Mission Santa Barbara",
+      "address": "2201 Laguna St, Santa Barbara, CA 93105",
+      "type": "establishment, museum, place_of_worship, point_of_interest",
+      "description": "Landmark 1786 Spanish mission with period art & artifacts, gardens with ocean views & a gift shop"
+    },
+    {
+      "title": "Shoreline Park",
+      "location": {
+        "lat": 34.396423,
+        "long": -119.706767
+      },
+      "name": "Shoreline Park",
+      "address": "Shoreline Dr & Santa Rosa Place, Santa Barbara, CA 93109",
+      "type": "establishment, park, point_of_interest",
+      "description": "Popular park overlooking the water offers a playground, grassy areas, walking paths & beach access"
+    },
+    {
+      "title": "Alice Keck Gardens",
+      "location": {
+        "lat": 34.429288,
+        "long": -119.706152
+      },
+      "name": "Alice Keck Park Memorial Gardens",
+      "address": "1500 Santa Barbara St, Santa Barbara, CA 93101",
+      "type": "establishment, park, point_of_interest",
+      "description": "Lush garden with an array of tree & plant species, koi ponds, a picnic area & a butterfly garden"
+    },
+    {
+      "title": "Museum Of Natural History",
+      "location": {
+        "lat": 34.440913,
+        "long": -119.71446
+      },
+      "name": "Santa Barbara Museum Of Natural History",
+      "address": "2559 Puesta Del Sol, Santa Barbara, CA 93105",
+      "type": "establishment, museum, point_of_interest",
+      "description": "Landmark with various exhibits including regional history, art, a planetarium & a butterfly garden"
+    },
+    {
+      "title": "Chase Palm Park",
+      "location": {
+        "lat": 34.415421,
+        "long": -119.682871
+      },
+      "name": "Chase Palm Park",
+      "address": "323 E Cabrillo Blvd, Santa Barbara, CA 93101",
+      "type": "establishment, park, point_of_interest",
+      "description": "Waterfront park lined with tall palm trees, offering lounging lawns & a walking/biking path"
+    },
+    {
+      "title": "Museum Of Natural History Sea Center",
+      "location": {
+        "lat": 34.41045,
+        "long": -119.685713
+      },
+      "name": "Santa Barbara Museum of Natural History Sea Center",
+      "address": "211 Stearns Wharf, Santa Barbara, CA 93101",
+      "type": "aquarium, establishment, museum, point_of_interest",
+      "description": "Aquatic exploration center with live shark touch pools, a tidepool tank & magnified sea specimens"
+    },
+    {
+      "title": "Chumash Painted Cave",
+      "location": {
+        "lat": 34.504185,
+        "long": -119.787612
+      },
+      "name": "Chumash Painted Cave State Historic Park",
+      "address": "Hwy 154, Santa Barbara, CA 93105",
+      "type": "establishment, natural_feature, park, point_of_interest",
+      "description": "Paintings by Native Americans of the 1600s & earlier decorate sandstone boulders underground"
+    },
+    {
+      "title": "Museum Of Art",
+      "location": {
+        "lat": 34.423471,
+        "long": -119.703926
+      },
+      "name": "Santa Barbara Museum Of Art",
+      "address": "1130 State St, Santa Barbara, CA 93101",
+      "type": "establishment, museum, point_of_interest, store",
+      "description": "Compact museum featuring 20th-century Western American paintings as well as modern Asian ceramics"
+    },
+    {
+      "title": "Douglas Family Preserve",
+      "location": {
+        "lat": 34.402706,
+        "long": -119.738846
+      },
+      "name": "Douglas Family Preserve",
+      "address": "Santa Barbara, CA 93109",
+      "type": "establishment, park, point_of_interest",
+      "description": "Hiking paths & ocean views feature at this park with 70 acres of native trees & plants"
+    },
+    {
+      "title": "MOXI, The Wolf Museum",
+      "location": {
+        "lat": 34.413437,
+        "long": -119.691698
+      },
+      "name": "MOXI, The Wolf Museum of Exploration + Innovation",
+      "address": "125 State St, Santa Barbara, CA 93101",
+      "type": "establishment, museum, point_of_interest",
+      "description": "Contemporary museum devoted to science, technology & the arts, with a focus on interactive exhibits"
+    }
+  ]
+}

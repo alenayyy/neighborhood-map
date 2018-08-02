@@ -6,7 +6,23 @@ import MapNavigation from './MapNavigation'
 import MapContent from './MapContent'
 import Footer from './Footer'
 
+import data from './data.json';
+
 class App extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      destinations: []
+    }
+  }
+
+  componentWillMount() {
+    this.setState({
+      destinations: data.destinations
+    });
+  }
+
   render() {
     return (
       <div>
@@ -14,8 +30,8 @@ class App extends Component {
         <Header />
         <Container fluid>
           <Row>
-            <MapNavigation />
-            <MapContent />
+            <MapNavigation destinations={this.state.destinations}/>
+            <MapContent destinations={this.state.destinations} />
           </Row>
         </Container>
         <Footer />
