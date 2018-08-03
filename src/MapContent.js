@@ -3,7 +3,7 @@ import { Col } from 'reactstrap'
 import MapComponent from './MapComponent'
 
 
-class MapContent extends Component {
+class MapContent extends Component {  
 
   render() {
     return (
@@ -15,6 +15,7 @@ class MapContent extends Component {
           containerElement={<div style={{ height: `920px` }} />}
           mapElement={<div style={{ height: `100%` }} />}
           destinations={this.props.destinations}
+          currentDestination={this.props.currentDestination}
         />
       </Col>
     );
