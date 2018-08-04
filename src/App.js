@@ -15,18 +15,30 @@ class App extends Component {
 
   constructor(props) {
     super(props);
+
     this.state = {
-      destinations: [],
-      currentDestination: "",
+      allDestinations: data.destinations,
+      destinations: data.destinations,
+      currentDestination: null,
       isOpen: false
     }
+
+    // console.log("Apps - con - destinations.length: "+this.state.destinations.length);
   }
 
   showInfo = (destination) => {
-    this.setState({
-      isOpen: this.state.currentDestination.title !== destination.title || !this.state.isOpen,
-      currentDestination: destination
-    })
+    if(!this.state.currentDestination) {
+      this.setState({
+        isOpen: true,
+        currentDestination: destination
+      })
+    }
+    else {
+      this.setState({
+        isOpen: this.state.currentDestination.title !== destination.title || !this.state.isOpen,
+        currentDestination: destination
+      })
+    }
   }
 
   toggleInfo = () => {
@@ -35,13 +47,23 @@ class App extends Component {
     })
   }
 
-  componentWillMount() {
+  performSearch = (searchValue) => {
+    let results = searchValue.trim() === '' ? this.state.allDestinations :
+      _.chain(this.state.allDestinations)
+      .filter(item => item.title.toLowerCase().includes(searchValue.trim().toLowerCase()))
+      .sortBy('title')
+      .value();
+
+    // console.log("Apps - search - results:"+results.length);
+
     this.setState({
-      destinations: data.destinations
+      destinations: results,
     });
   }
 
   fetchInfo = (destinationTitle) => {
+
+    // console.log("Apps - fetchInfo: "+this.state.destinations.length);
 
     let destination = _.find(this.state.destinations, {title: destinationTitle});
     let wikipediaUrl = 'https://en.wikipedia.org/api/rest_v1/page/summary/';
@@ -63,8 +85,6 @@ class App extends Component {
       });
     })
     .catch(error => {
-      // this.stopLoading();
-      console.log("extract not found; using default description");
       this.setState({
         currentDestination: destination,
         isOpen: true
@@ -81,12 +101,12 @@ class App extends Component {
           <Row>
             <MapNavigation  destinations={this.state.destinations}
                             fetchInfo={this.fetchInfo}
+                            search={this.performSearch}
             />
             <MapContent destinations={this.state.destinations}
                         currentDestination={this.state.currentDestination}
                         showInfo={this.showInfo}
                         toggleInfo={this.toggleInfo}
-                        // infoIndex={this.state.infoIndex}
                         isOpen={this.state.isOpen}
             />
           </Row>
