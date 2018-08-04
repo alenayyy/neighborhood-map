@@ -17,8 +17,22 @@ class App extends Component {
     super(props);
     this.state = {
       destinations: [],
-      currentDestination: ""
+      currentDestination: "",
+      isOpen: false
     }
+  }
+
+  showInfo = (destination) => {
+    this.setState({
+      isOpen: this.state.currentDestination.title !== destination.title || !this.state.isOpen,
+      currentDestination: destination
+    })
+  }
+
+  toggleInfo = () => {
+    this.setState({
+      isOpen: !this.state.isOpen
+    })
   }
 
   componentWillMount() {
@@ -44,14 +58,16 @@ class App extends Component {
         destination.description = 'Wikipedia: "'+json.extract+'"';
       }
       this.setState({
-        currentDestination: destination
+        currentDestination: destination,
+        isOpen: true
       });
     })
     .catch(error => {
       // this.stopLoading();
       console.log("extract not found; using default description");
       this.setState({
-        currentDestination: destination
+        currentDestination: destination,
+        isOpen: true
       });
     });
   }
@@ -68,6 +84,10 @@ class App extends Component {
             />
             <MapContent destinations={this.state.destinations}
                         currentDestination={this.state.currentDestination}
+                        showInfo={this.showInfo}
+                        toggleInfo={this.toggleInfo}
+                        // infoIndex={this.state.infoIndex}
+                        isOpen={this.state.isOpen}
             />
           </Row>
         </Container>

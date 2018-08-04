@@ -10,13 +10,11 @@ const MapComponent = withScriptjs(withGoogleMap((props) =>
       <Marker
         position={{ lat: destination.location.lat, lng: destination.location.long }}
         key={destination.title}
-        animation={(props.currentDestination.title === destination.title) && 2}
-        onClick={() => {
-
-        }}
+        animation={(props.currentDestination && props.currentDestination.title === destination.title) && 2}
+        onClick={() => props.showInfo(destination)}
       >
-        { (props.currentDestination.title === destination.title ) &&
-          <InfoWindow onCloseClick={props.onToggleOpen}>
+        { (props.isOpen && props.currentDestination.title === destination.title ) &&
+          <InfoWindow onCloseClick={props.toggleInfo}>
             <div>
               {props.currentDestination.description}
             </div>
@@ -25,7 +23,6 @@ const MapComponent = withScriptjs(withGoogleMap((props) =>
 
 
     ))}
-  {/* {props.isMarkerShown && <Marker position={{ lat: 45.918, lng: 24.861 }} />} */}
   </GoogleMap>
 ))
 
