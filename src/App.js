@@ -20,13 +20,19 @@ class App extends Component {
     this.state = {
       destinations: data.destinations,
       currentDestination: null,
-      isOpen: false
+      isOpen: false,
+      activeLink: ''
     }
   }
 
   showInfo = (destinationTitle) => {
 
-    let destination = this.getDestination(destinationTitle);    
+    let destination = this.getDestination(destinationTitle);
+
+    if(this.state.activeLink) {
+      document.getElementById(this.state.activeLink).classList.remove("active");
+    }
+    document.getElementById(destinationTitle).classList.add("active");
 
     WikipediaServiceAPI.getInfo(destination)
       .then(wikiData => {
@@ -35,7 +41,8 @@ class App extends Component {
         }
         this.setState({
           isOpen: true,
-          currentDestination: destination
+          currentDestination: destination,
+          activeLink: destinationTitle
         })
       })
       .catch(error => {
@@ -44,8 +51,10 @@ class App extends Component {
   }
 
   toggleInfo = () => {
+    document.getElementById(this.state.activeLink).classList.remove("active");
     this.setState({
-      isOpen: !this.state.isOpen
+      isOpen: !this.state.isOpen,
+      activeLink: ''
     })
   }
 

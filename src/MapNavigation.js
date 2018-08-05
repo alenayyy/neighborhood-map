@@ -8,6 +8,7 @@ import _ from 'lodash';
 class MapNavigation extends Component {
 
   handleClick = (e) => {
+    e.preventDefault();
     this.props.showInfo(e.target.text);
   };
 
@@ -25,7 +26,7 @@ class MapNavigation extends Component {
     destinations.forEach( destination => {
       destinationTitles.push(
         <NavItem key={destination.name}>
-          <NavLink onClick={this.handleClick}>{destination.title}</NavLink>
+          <NavLink id={destination.title} className="text-primary" onClick={this.handleClick}>{destination.title}</NavLink>
         </NavItem>)
       });
 
