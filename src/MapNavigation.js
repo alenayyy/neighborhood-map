@@ -27,7 +27,7 @@ class MapNavigation extends Component {
     let destinations = _.sortBy(this.props.destinations, ['title']);
     let destinationTitles = [];
     let navItemStyle = '';
-    destinations.forEach( destination => {
+    destinations.forEach( (destination) => {
       if(this.props.currentDestination && destination.title === this.props.currentDestination.title) {
         navItemStyle = 'active';
       }
@@ -36,7 +36,12 @@ class MapNavigation extends Component {
       }
       destinationTitles.push(
         <NavItem key={destination.name} className={navItemStyle}>
-          <NavLink id={destination.title} className="text-primary" onClick={this.handleClick}>{destination.title}</NavLink>
+          <NavLink tabIndex={0} className="text-primary"
+            id={destination.title}
+            onClick={this.handleClick}
+            onKeyPress={this.handleClick}>
+            {destination.title}
+          </NavLink>
         </NavItem>)
       });
 
