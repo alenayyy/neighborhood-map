@@ -20,19 +20,16 @@ class App extends Component {
     this.state = {
       destinations: data.destinations,
       currentDestination: null,
-      isOpen: false,
-      activeLink: ''
+      isOpen: false
     }
   }
 
+  /**
+    When a point of interest link or marker is clicked, information about the point of interest is fetched from Wikipedia
+  */
   showInfo = (destinationTitle) => {
 
     let destination = this.getDestination(destinationTitle);
-
-    if(this.state.activeLink) {
-      document.getElementById(this.state.activeLink).classList.remove("active");
-    }
-    document.getElementById(destinationTitle).classList.add("active");
 
     WikipediaServiceAPI.getInfo(destination)
       .then(wikiData => {
@@ -50,18 +47,26 @@ class App extends Component {
       });
   }
 
+  /**
+    When a marker info box is closed, the selected link color reverts to default
+  */
   toggleInfo = () => {
-    document.getElementById(this.state.activeLink).classList.remove("active");
     this.setState({
       isOpen: !this.state.isOpen,
-      activeLink: ''
+      currentDestination: null
     })
   }
 
+  /**
+    Using lodash to search the list for the point of interest coresponding to 'title'
+  */
   getDestination = (title) => {
     return _.find(data.destinations, {'title': title});
   }
 
+  /**
+    Using lodash to search the list for the points of interests containing the 'searchValue'
+  */
   performSearch = (searchValue) => {
     let results = searchValue.trim() === '' ? data.destinations :
       _.chain(data.destinations)
@@ -82,6 +87,7 @@ class App extends Component {
         <Container fluid>
           <Row>
             <MapNavigation  destinations={this.state.destinations}
+                            currentDestination={this.state.currentDestination}
                             showInfo={this.showInfo}
                             search={this.performSearch}
             />

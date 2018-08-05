@@ -5,6 +5,9 @@ import { Form, FormGroup, Input } from 'reactstrap'
 
 import _ from 'lodash';
 
+/**
+  MapNavigation is the left side navigation consisting of a list of points of interests and a search field.
+*/
 class MapNavigation extends Component {
 
   handleClick = (e) => {
@@ -15,7 +18,7 @@ class MapNavigation extends Component {
   handleSubmit = (e) => {
     if (e.key === 'Enter') {
       e.preventDefault();
-      this.props.search(document.getElementById("destination").value);
+      this.props.search(e.target.value);
     }
   }
 
@@ -23,9 +26,16 @@ class MapNavigation extends Component {
 
     let destinations = _.sortBy(this.props.destinations, ['title']);
     let destinationTitles = [];
+    let navItemStyle = '';
     destinations.forEach( destination => {
+      if(this.props.currentDestination && destination.title === this.props.currentDestination.title) {
+        navItemStyle = 'active';
+      }
+      else {
+        navItemStyle = '';
+      }
       destinationTitles.push(
-        <NavItem key={destination.name}>
+        <NavItem key={destination.name} className={navItemStyle}>
           <NavLink id={destination.title} className="text-primary" onClick={this.handleClick}>{destination.title}</NavLink>
         </NavItem>)
       });
