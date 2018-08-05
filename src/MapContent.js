@@ -43,7 +43,7 @@ const MapComponent = withScriptjs(withGoogleMap((props) =>
       >
         { props.currentDestination && props.currentDestination.title === destination.title &&
           <InfoWindow onCloseClick={props.toggleInfo}>
-            <div>
+            <div className="info-window">
               {props.currentDestination.description}
             </div>
           </InfoWindow>}

@@ -17,3 +17,16 @@ body {
 nav > ul > li.active {
   background-color: orange;
 }
+
+
+@media all and (max-width: 600px) {
+  .info-window {
+    width: 200px;
+  }
+}
+
+@media all and (min-width: 600px) {
+  .info-window {
+    width: 400px;
+  }
+}
