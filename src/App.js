@@ -8,6 +8,7 @@ import Footer from './Footer'
 
 import _ from 'lodash'
 
+import WikipediaServiceAPI from './WikipediaServiceAPI'
 import data from './data.json'
 
 
@@ -17,28 +18,29 @@ class App extends Component {
     super(props);
 
     this.state = {
-      allDestinations: data.destinations,
       destinations: data.destinations,
       currentDestination: null,
       isOpen: false
     }
-
-    // console.log("Apps - con - destinations.length: "+this.state.destinations.length);
   }
 
-  showInfo = (destination) => {
-    if(!this.state.currentDestination) {
-      this.setState({
-        isOpen: true,
-        currentDestination: destination
+  showInfo = (destinationTitle) => {
+
+    let destination = this.getDestination(destinationTitle);    
+
+    WikipediaServiceAPI.getInfo(destination)
+      .then(wikiData => {
+        if(wikiData.extract) {
+            destination.description = 'Wikipedia: "'+wikiData.extract+'"';
+        }
+        this.setState({
+          isOpen: true,
+          currentDestination: destination
+        })
       })
-    }
-    else {
-      this.setState({
-        isOpen: this.state.currentDestination.title !== destination.title || !this.state.isOpen,
-        currentDestination: destination
-      })
-    }
+      .catch(error => {
+        console.log(error);
+      });
   }
 
   toggleInfo = () => {
@@ -47,48 +49,19 @@ class App extends Component {
     })
   }
 
+  getDestination = (title) => {
+    return _.find(data.destinations, {'title': title});
+  }
+
   performSearch = (searchValue) => {
-    let results = searchValue.trim() === '' ? this.state.allDestinations :
-      _.chain(this.state.allDestinations)
+    let results = searchValue.trim() === '' ? data.destinations :
+      _.chain(data.destinations)
       .filter(item => item.title.toLowerCase().includes(searchValue.trim().toLowerCase()))
       .sortBy('title')
       .value();
 
-    // console.log("Apps - search - results:"+results.length);
-
     this.setState({
-      destinations: results,
-    });
-  }
-
-  fetchInfo = (destinationTitle) => {
-
-    // console.log("Apps - fetchInfo: "+this.state.destinations.length);
-
-    let destination = _.find(this.state.destinations, {title: destinationTitle});
-    let wikipediaUrl = 'https://en.wikipedia.org/api/rest_v1/page/summary/';
-
-    fetch(wikipediaUrl+encodeURI(destination.name), {
-      method: 'GET',
-      headers: {'Content-Type':'application/json'}
-    })
-    .then(result => {
-      return result.json();
-    })
-    .then(json => {
-      if(json.extract) {
-        destination.description = 'Wikipedia: "'+json.extract+'"';
-      }
-      this.setState({
-        currentDestination: destination,
-        isOpen: true
-      });
-    })
-    .catch(error => {
-      this.setState({
-        currentDestination: destination,
-        isOpen: true
-      });
+      destinations: results
     });
   }
 
@@ -100,14 +73,13 @@ class App extends Component {
         <Container fluid>
           <Row>
             <MapNavigation  destinations={this.state.destinations}
-                            fetchInfo={this.fetchInfo}
+                            showInfo={this.showInfo}
                             search={this.performSearch}
             />
             <MapContent destinations={this.state.destinations}
                         currentDestination={this.state.currentDestination}
                         showInfo={this.showInfo}
                         toggleInfo={this.toggleInfo}
-                        isOpen={this.state.isOpen}
             />
           </Row>
         </Container>

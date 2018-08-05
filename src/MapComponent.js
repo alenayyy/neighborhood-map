@@ -11,9 +11,9 @@ const MapComponent = withScriptjs(withGoogleMap((props) =>
         position={{ lat: destination.location.lat, lng: destination.location.long }}
         key={destination.title}
         animation={(props.currentDestination && props.currentDestination.title === destination.title) && 2}
-        onClick={() => props.showInfo(destination)}
+        onClick={() => props.showInfo(destination.title)}
       >
-        { (props.isOpen && props.currentDestination.title === destination.title ) &&
+        { props.currentDestination && props.currentDestination.title === destination.title &&
           <InfoWindow onCloseClick={props.toggleInfo}>
             <div>
               {props.currentDestination.description}

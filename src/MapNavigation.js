@@ -1,14 +1,14 @@
 import React, {Component} from 'react';
 import { Col } from 'reactstrap';
 import { Nav, NavItem, NavLink } from 'reactstrap';
-import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap'
+import { Form, FormGroup, Input } from 'reactstrap'
 
 import _ from 'lodash';
 
 class MapNavigation extends Component {
 
   handleClick = (e) => {
-    this.props.fetchInfo(e.target.text);
+    this.props.showInfo(e.target.text);
   };
 
   handleSubmit = (e) => {
@@ -30,7 +30,7 @@ class MapNavigation extends Component {
       });
 
       return (
-        <Col tag="nav" md={2} className="order-md-1 pt-2 bg-light sidebar ">
+        <Col tag="nav" md={2} className="order-md-1 pt-2 bg-light sidebar">
           {/* <div className="sidebar-sticky"> */}
           <Form className="pt-2">
             <FormGroup>
