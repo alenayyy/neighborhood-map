@@ -13,13 +13,17 @@ class MapContent extends Component {
   render() {
     return (
       <Col tag="main" className="order-md-2 pt-3" role="main">
+        <div aria-label="map">
         <MapComponent
           googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyDj6Zlb8FrgsuGgoS7yDg6GKSZngWmFMuA&v=3.exp&libraries=geometry,drawing,places"
           loadingElement={<div style={{ height: `100%` }} />}
           containerElement={<div style={{ height: `830px` }} />}
           mapElement={<div style={{ height: `100%` }} />}
+          defaultLat={34.420832}
+          defaultLong={-119.698206}
           {...this.props}
         />
+        </div>
       </Col>
     );
   }
@@ -32,7 +36,7 @@ class MapContent extends Component {
 const MapComponent = withScriptjs(withGoogleMap((props) =>
   <GoogleMap
     defaultZoom={13}
-    defaultCenter={{ lat: 34.420832, lng: -119.698206 }}
+    defaultCenter={{ lat: props.defaultLat, lng: props.defaultLong }}
   >
     {props.destinations.map( destination => (
       <Marker
@@ -44,7 +48,7 @@ const MapComponent = withScriptjs(withGoogleMap((props) =>
         { props.currentDestination && props.currentDestination.title === destination.title &&
           <InfoWindow onCloseClick={props.toggleInfo}>
             <div className="info-window">
-              {props.currentDestination.description}
+              {props.currentDestination.info}
             </div>
           </InfoWindow>}
       </Marker>

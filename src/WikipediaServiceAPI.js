@@ -9,6 +9,8 @@ class WikipediaServiceAPI {
         headers: {'Content-Type':'application/json'}
       });
       if(!response.ok) {
+        // user will see a messsage like "Wikipedia not avaliable" in the InfoWindow
+        // default description is provided
         console.log('wikipedia has no info on: '+destination.name);
         return '';
       }
@@ -16,6 +18,8 @@ class WikipediaServiceAPI {
       return wikiData;
 
     } catch (e) {
+      // user will see a messsage like "Wikipedia not avaliable" in the InfoWindow
+      // default description is provided
       console.log('api call failed: '+e);
       return '';
     }

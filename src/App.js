@@ -20,7 +20,8 @@ class App extends Component {
     this.state = {
       destinations: data.destinations,
       currentDestination: null,
-      isOpen: false
+      navbarCollapsed: false,
+      isOpen: false,
     }
   }
 
@@ -34,7 +35,10 @@ class App extends Component {
     WikipediaServiceAPI.getInfo(destination)
       .then(wikiData => {
         if(wikiData.extract) {
-            destination.description = 'Wikipedia: "'+wikiData.extract+'"';
+            destination.info = 'Wikipedia: "'+wikiData.extract+'"';
+        }
+        else {
+          destination.info = "Wikipedia not available :( However, here's some info for you: "+destination.description;
         }
         this.setState({
           isOpen: true,
@@ -55,6 +59,12 @@ class App extends Component {
       isOpen: !this.state.isOpen,
       currentDestination: null
     })
+  }
+
+  toggleHeaderNav = () => {
+    this.setState({
+      navbarCollapsed: !this.state.navbarCollapsed
+    });
   }
 
   /**
@@ -83,7 +93,9 @@ class App extends Component {
     return (
       <div>
 
-        <Header />
+        <Header toggleHeaderNav={this.toggleHeaderNav}
+                navbarCollapsed={this.state.navbarCollapsed}
+        />
         <Container fluid>
           <Row>
             <MapNavigation  destinations={this.state.destinations}

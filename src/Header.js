@@ -5,30 +5,16 @@ import {
   NavbarToggler,
   NavbarBrand,
   Nav,
-  NavItem  
+  NavItem
 } from 'reactstrap';
 
-export default class Example extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.toggle = this.toggle.bind(this);
-    this.state = {
-      isOpen: false
-    };
-  }
-  toggle() {
-    this.setState({
-      isOpen: !this.state.isOpen
-    });
-  }
-  render() {
+const Header = (props) => {
     return (
       <div>
         <Navbar color="dark" dark expand="md">
           <NavbarBrand href="/">Santa Barbara's Attactions Map</NavbarBrand>
-          <NavbarToggler onClick={this.toggle} />
-          <Collapse isOpen={this.state.isOpen} navbar>
+          <NavbarToggler onClick={props.toggleHeaderNav} />
+          <Collapse isOpen={props.navbarCollapsed} navbar>
             <Nav className="ml-auto">
               <NavItem>
                 <NavbarBrand href="https://github.com/alenayyy/neighborhood-map">GitHub</NavbarBrand>
@@ -38,5 +24,6 @@ export default class Example extends React.Component {
         </Navbar>
       </div>
     );
-  }
-}
+};
+
+export default Header;
