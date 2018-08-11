@@ -90,21 +90,25 @@ class App extends Component {
   }
 
   render() {
+
+    const { navbarCollapsed, currentDestination, destinations } = this.state
+    
     return (
+
       <div>
 
         <Header toggleHeaderNav={this.toggleHeaderNav}
-                navbarCollapsed={this.state.navbarCollapsed}
+                navbarCollapsed={navbarCollapsed}
         />
         <Container fluid>
           <Row>
-            <MapNavigation  destinations={this.state.destinations}
-                            currentDestination={this.state.currentDestination}
+            <MapNavigation  destinations={destinations}
+                            currentDestination={currentDestination}
                             showInfo={this.showInfo}
                             search={this.performSearch}
             />
-            <MapContent destinations={this.state.destinations}
-                        currentDestination={this.state.currentDestination}
+            <MapContent destinations={destinations}
+                        currentDestination={currentDestination}
                         showInfo={this.showInfo}
                         toggleInfo={this.toggleInfo}
             />
